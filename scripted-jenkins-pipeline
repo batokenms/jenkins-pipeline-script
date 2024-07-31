@@ -1,7 +1,7 @@
 node {
 
     stage("Git Clone"){
-        git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/joshking1/spring-boot-mongo-docker.git'
+        git branch: 'main', credentialsId: 'GIT-HUB-CREDENTIALS', url: 'https://github.com/batokenms/spring-boot-mongo-docker.git'
     }
     stage('Maven Clean Build') {
         def mavenHome = tool name: "Maven-3.8.6", type: "maven"
@@ -25,12 +25,12 @@ node {
     }
     stage("Docker Image Tag"){
 
-        sh "docker tag king-httpd josh1991/king-httpd:king-httpd"
+        sh "docker tag king-httpd jeanp12/king-httpd:king-httpd"
     }
     
     stage("Docker Login to Hub Docker"){
      withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]){
-        sh 'docker login -u josh1991 -p $PASSWORD'
+        sh 'docker login -u jeanp12 -p $PASSWORD'
      }
      
     }
