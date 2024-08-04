@@ -37,6 +37,6 @@ node {
      
     stage("Docker Image Push"){
         
-        sh "docker push josh1991/king-httpd:king-httpd"
+        sh "docker push jeanp12/king-httpd:king-httpd"
     }
  }
