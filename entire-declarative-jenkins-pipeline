@@ -1,6 +1,9 @@
 pipeline { 
 
-    agent any 
+    agent {
+  label 'Jenkins-agent-1'
+    }
+ 
     
     options {
         timestamps ()
